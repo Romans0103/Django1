@@ -18,6 +18,7 @@ from django.urls import path
 from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 
 urlpatterns = [
@@ -26,5 +27,10 @@ urlpatterns = [
 
 # Используйте include() чтобы доставлять URL из каталога приложения
 urlpatterns += [
-    path('catalog/', include('catalog.urls'))
+    path('catalog/', include('catalog.urls')),
+]
+
+# Добавьте URL-соотношения, чтобы перенаправлять запросы с корневого URL На URL приложения
+urlpatterns += [
+    path('', RedirectView.as_view(url='/catalog/',permanent=True)),
 ]
