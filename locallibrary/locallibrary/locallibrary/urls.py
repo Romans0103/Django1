@@ -32,5 +32,9 @@ urlpatterns += [
 
 # Добавьте URL-соотношения, чтобы перенаправлять запросы с корневого URL На URL приложения
 urlpatterns += [
-    path('', RedirectView.as_view(url='/catalog/',permanent=True)),
+    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
 ]
+
+# Используйте static() чтобы добавить соотношения для статических файлов
+# Только для разработки!!!
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
