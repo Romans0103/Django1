@@ -110,3 +110,25 @@ class BookInstance(models.Model):
             String for representing the Model object
             '''
             return '{0} ({1})'.format(self.book.title)
+
+class Author(models.model):
+    '''
+    Model representing an Author
+    '''
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    data_of_birth = models.DateField(null=True, blank=True)
+    data_of_death = models.DateField('Died', null=True, blank=True)
+
+    def get_absolute_url(self):
+        '''
+        Returns the url to accsess a particular author instance.
+        '''
+        return reverse('author-detail', args=[str(self.id)])
+
+    def __str__(self):
+        '''
+        String for representing the Models object.
+        '''
+        return '{0} {1}'.format(self.last_name, self.first_name)
+
