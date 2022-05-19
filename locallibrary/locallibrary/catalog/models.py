@@ -26,3 +26,9 @@ def __str__(self):
     String for representing the MyModelName object (in Admin site etc.)
     '''
     return self.field_name
+
+
+# Create a new record using the model's constructor.
+a_record = MyModelName(my_field_name="Instance #1")
+# Save the object into the database.
+a_record.save()
