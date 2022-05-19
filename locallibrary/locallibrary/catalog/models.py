@@ -112,7 +112,7 @@ class BookInstance(models.Model):
             '''
             return '{0} ({1})'.format(self.book.title)
 
-class Author(models.model):
+class Author(models.Model):
     '''
     Model representing an Author
     '''
