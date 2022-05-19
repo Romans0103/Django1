@@ -13,28 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
+from django.contrib import admin
 from django.urls import include
+from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import RedirectView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# Используйте include() чтобы доставлять URL из каталога приложения
+# # Используйте include() чтобы доставлять URL из каталога приложения
 urlpatterns += [
     path('catalog/', include('catalog.urls')),
 ]
-
-# Добавьте URL-соотношения, чтобы перенаправлять запросы с корневого URL На URL приложения
+#
+# # Добавьте URL-соотношения, чтобы перенаправлять запросы с корневого URL На URL приложения
 urlpatterns += [
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
 ]
-
-# Используйте static() чтобы добавить соотношения для статических файлов
-# Только для разработки!!!
+#
+# # Используйте static() чтобы добавить соотношения для статических файлов
+# # Только для разработки!!!
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
